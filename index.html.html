@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>வேலுகீதா Digital Books — Velugeetha Bookstore</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Sans+Tamil:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c8860a;
+  --deep-gold: #a06800;
+  --saffron: #e8940a;
+  --cream: #fdf6e3;
+  --dark: #1a1008;
+  --brown: #3d1f00;
+  --warm-gray: #7a6a55;
+  --accent-red: #b5280a;
+  --light-gold: #f5dfa0;
+  --bg: #fef9f0;
+  --card-bg: #fffdf5;
+  --border: #e8d5a0;
+  --green: #2d5a27;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--dark);font-family:'Lato',sans-serif;line-height:1.7;}
+
+/* OFFER BANNER */
+.offer-banner{background:var(--accent-red);color:#fff;text-align:center;padding:11px;font-size:0.95rem;font-weight:700;letter-spacing:1px;animation:pulse 2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.85;}}
+
+/* HEADER */
+header{background:linear-gradient(135deg,#1a0a00 0%,#3d1500 40%,#6b2a00 100%);color:#fff;padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden;}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,134,10,0.28) 0%,transparent 70%);}
+.header-lamp{font-size:3rem;display:block;margin-bottom:10px;position:relative;animation:glow 3s ease-in-out infinite alternate;}
+@keyframes glow{from{filter:drop-shadow(0 0 8px #ffaa00);}to{filter:drop-shadow(0 0 24px #ffcc44);}}
+.header-tamil{font-family:'Noto Sans Tamil',sans-serif;font-size:1.3rem;color:#fde68a;opacity:0.9;position:relative;margin-bottom:4px;}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fde68a;position:relative;}
+header p{color:#fcd97a;font-size:0.9rem;letter-spacing:1.5px;text-transform:uppercase;margin-top:8px;position:relative;}
+.lang-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:7px;margin-top:18px;position:relative;}
+.lang-tag{background:rgba(255,255,255,0.11);border:1px solid rgba(200,134,10,0.45);color:#fde68a;padding:4px 14px;border-radius:20px;font-size:0.82rem;}
+
+/* NAV */
+nav{background:var(--brown);padding:0 20px;display:flex;justify-content:center;gap:4px;flex-wrap:wrap;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,0.3);}
+nav a{color:#fde68a;text-decoration:none;padding:13px 14px;font-size:0.82rem;font-weight:700;letter-spacing:0.5px;border-bottom:3px solid transparent;transition:border-color 0.2s,color 0.2s;}
+nav a:hover{border-bottom-color:var(--gold);color:#fff;}
+
+/* MAIN */
+main{max-width:980px;margin:0 auto;padding:48px 20px 72px;}
+
+/* BOOK SECTION */
+.book-section{margin-bottom:52px;}
+.section-head{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:6px;border-left:5px solid var(--gold);padding-left:16px;}
+.section-head h2{font-family:'Playfair Display',serif;font-size:1.45rem;color:var(--brown);}
+.section-head p{color:var(--warm-gray);font-size:0.88rem;margin-top:3px;}
+.price-pill{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;padding:6px 18px;border-radius:100px;font-size:0.88rem;white-space:nowrap;align-self:flex-start;margin-top:2px;}
+.price-pill .mrp{text-decoration:line-through;opacity:0.65;font-size:0.8rem;}
+.price-pill .offer-price{font-size:1.1rem;font-weight:700;}
+.price-pill .badge{background:var(--gold);color:#1a0800;font-size:0.65rem;font-weight:900;padding:2px 8px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px;}
+.subsection-label{font-size:0.82rem;font-weight:700;color:var(--green);letter-spacing:0.5px;margin:18px 0 10px;text-transform:uppercase;}
+
+/* LANGUAGE GRID */
+.lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px;margin-bottom:8px;}
+.lang-card{background:var(--card-bg);border:1px solid var(--border);border-top:4px solid var(--gold);border-radius:13px;padding:18px 12px 14px;text-align:center;box-shadow:0 3px 14px rgba(100,60,0,0.07);transition:transform 0.2s,box-shadow 0.2s;}
+.lang-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(100,60,0,0.13);}
+.lang-card .flag{font-size:1.6rem;margin-bottom:4px;}
+.lang-card .name{font-weight:700;font-size:0.9rem;color:var(--brown);margin-bottom:12px;}
+.lang-card form{display:flex;justify-content:center;}
+
+/* PLACEHOLDER CARD */
+.lang-card.coming{border-top-color:#ccc;opacity:0.7;}
+.coming-btn{display:inline-block;background:#f0e8d8;color:var(--warm-gray);border:1.5px dashed #c8b080;padding:7px 14px;border-radius:8px;font-size:0.78rem;font-weight:700;cursor:default;}
+
+/* DIVIDER */
+.section-divider{border:none;border-top:2px dashed rgba(200,134,10,0.22);margin:8px 0 48px;}
+
+/* BUNDLE */
+.bundle-section{background:linear-gradient(135deg,#2a0f00,#5a2000);border-radius:20px;padding:44px 36px;text-align:center;color:#fff;margin-bottom:48px;}
+.bundle-section h2{font-family:'Playfair Display',serif;font-size:2rem;color:#fde68a;margin-bottom:8px;}
+.bundle-section p{color:#d4a04a;margin-bottom:6px;font-size:0.95rem;}
+.bundle-price{font-family:'Playfair Display',serif;font-size:3.4rem;font-weight:900;color:#fde68a;margin:16px 0 6px;}
+.bundle-save{background:rgba(200,134,10,0.18);border:1px solid rgba(200,134,10,0.35);color:#fde68a;display:inline-block;padding:4px 18px;border-radius:100px;font-size:0.8rem;font-weight:700;letter-spacing:0.5px;margin-bottom:24px;}
+.bundle-btn{background:linear-gradient(135deg,#c8860a,#e8940a);color:#1a0800;border:none;padding:14px 44px;border-radius:12px;font-size:1rem;font-weight:900;cursor:pointer;text-decoration:none;display:inline-block;letter-spacing:1px;transition:transform 0.2s,opacity 0.2s;}
+.bundle-btn:hover{transform:scale(1.04);opacity:0.92;}
+.bundle-langs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:20px;}
+.bundle-lang{background:rgba(255,255,255,0.1);border:1px solid rgba(200,134,10,0.3);color:#fde68a;padding:4px 14px;border-radius:20px;font-size:0.78rem;}
+
+/* FOOTER */
+footer{background:var(--dark);color:rgba(253,246,227,0.55);text-align:center;padding:28px 20px;font-size:0.85rem;}
+footer span{color:var(--gold);}
+footer a{color:var(--gold);text-decoration:none;}
+
+/* NOTE BOX */
+.note-box{background:#fff9ee;border:1px solid #f0d080;border-left:4px solid var(--gold);border-radius:10px;padding:12px 16px;margin-top:10px;font-size:0.83rem;color:#6a4a10;}
+
+@media(max-width:600px){
+  .lang-grid{grid-template-columns:repeat(2,1fr);}
+  .bundle-section{padding:32px 20px;}
+  .bundle-price{font-size:2.6rem;}
+  .section-head{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<div class="offer-banner">🎉 Inaugural Offer — Limited Time Only! 🎉</div>
+
+<header>
+  <span class="header-lamp">🪔</span>
+  <div class="header-tamil">வேலுகீதா டிஜிட்டல் புத்தகங்கள்</div>
+  <h1>Velugeetha Digital Books</h1>
+  <p>Knowledge in Your Language</p>
+  <div class="lang-tags">
+    <span class="lang-tag">தமிழ் Tamil</span>
+    <span class="lang-tag">తెలుగు Telugu</span>
+    <span class="lang-tag">മലയാളം Malayalam</span>
+    <span class="lang-tag">ಕನ್ನಡ Kannada</span>
+    <span class="lang-tag">हिंदी Hindi</span>
+    <span class="lang-tag">English</span>
+  </div>
+</header>
+
+<nav>
+  <a href="#special-edu">🎓 Special Ed</a>
+  <a href="#nature">🌿 Nature's Pharmacy</a>
+  <a href="#law1">⚖️ Law Book 1</a>
+  <a href="#law2">📜 Law Book 2</a>
+  <a href="#sanathanam">📗 Sanathanam</a>
+  <a href="#periyar">📜 Periyar</a>
+  <a href="#mindtraps">🧠 MindTraps</a>
+  <a href="#bundle">🎁 Bundle</a>
+</nav>
+
+<main>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BOOK 1: SPECIAL EDUCATION GUIDE        -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="book-section" id="special-edu">
+    <div class="section-head">
+      <div>
+        <h2>🎓 Special Education Guide</h2>
+        <p>Empowering parents, teachers &amp; caregivers for inclusive learning</p>
+      </div>
+      <div class="price-pill">
+        <span class="mrp">₹350</span>
+        <span class="offer-price">₹250</span>
+        <span class="badge">Inaugural Offer</span>
+      </div>
+    </div>
+    <div class="lang-grid">
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Tamil</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sj2EadvO03p45x" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🔤</div>
+        <div class="name">English</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sj1KfPQd9D7mWZ" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Telugu</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sj2QOexSWtHm5k" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Malayalam</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sj2WuHmwNRZ0C7" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Kannada</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sj2TwXcvGNVYcu" async></script></form>
+      </div>
+    </div>
+  </div>
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BOOK 2: NATURE'S PHARMACY               -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="book-section" id="nature">
+    <div class="section-head">
+      <div>
+        <h2>🌿 Nature's Pharmacy</h2>
+        <p>200+ medicinal plants from Siddha, Ayurveda &amp; tribal medicine</p>
+      </div>
+      <div class="price-pill">
+        <span class="mrp">₹250</span>
+        <span class="offer-price">₹175</span>
+        <span class="badge">Inaugural Offer</span>
+      </div>
+    </div>
+    <div class="lang-grid">
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Tamil</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkKrfrZQROH0rG" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🔤</div>
+        <div class="name">English</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkKpNlYQJ7j0s3" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Telugu</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkKm5j6OjqjnsH" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Kannada</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkKgGD4NcEmADu" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Malayalam</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkKjzTBXkP6XCh" async></script></form>
+      </div>
+    </div>
+  </div>
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BOOK 3: BASIC LAW — BOOK 1              -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="book-section" id="law1">
+    <div class="section-head">
+      <div>
+        <h2>⚖️ Basic Law Text Books</h2>
+        <p>Know your rights — essential law for every citizen</p>
+      </div>
+      <div class="price-pill">
+        <span class="mrp">₹250</span>
+        <span class="offer-price">₹99</span>
+        <span class="badge">Inaugural Offer</span>
+      </div>
+    </div>
+
+    <div class="subsection-label">📘 Book 1 — 5 Languages</div>
+    <div class="lang-grid">
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Tamil</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkLFAakZociPHA" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🔤</div>
+        <div class="name">English</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkLDF4MZzaPApk" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Telugu</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkLA2Yl8mSOkI4" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Kannada</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkL7MRa5KZHGAq" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Malayalam</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkL51XSG7CDEbZ" async></script></form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BOOK 4: BASIC LAW — BOOK 2              -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="book-section" id="law2">
+    <div class="subsection-label">📗 Book 2 — Bilingual Edition (Tamil &amp; English)</div>
+    <div class="lang-grid" style="max-width:340px;">
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Tamil</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkKzcIBp1GbTFj" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🔤</div>
+        <div class="name">English</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SkL2GruyCewRyy" async></script></form>
+      </div>
+    </div>
+  </div>
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BOOK 5: SANATHANAM VS DRAVIDIAN         -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="book-section" id="sanathanam">
+    <div class="section-head">
+      <div>
+        <h2>📗 Sanathanam vs Dravidian Model 2.0</h2>
+        <p>History, sociology &amp; political philosophy — analytical deep-dive</p>
+      </div>
+      <div class="price-pill">
+        <span class="mrp">₹350</span>
+        <span class="offer-price">₹200</span>
+        <span class="badge">Inaugural Offer</span>
+      </div>
+    </div>
+    <div class="lang-grid">
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Tamil</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sjk55cXroJ87Jk" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🔤</div>
+        <div class="name">English</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sjk0lOhR8e4yui" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Telugu</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_Sjk7tmNRRtAHwQ" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Malayalam</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SjkBfulImFTtJu" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Kannada</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SjkEDM3VJLiZuw" async></script></form>
+      </div>
+      <div class="lang-card">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Hindi</div>
+        <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_SjkHhCYRiQ7ecl" async></script></form>
+      </div>
+    </div>
+  </div>
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BOOK 6: THANTHAI PERIYAR RESEARCH       -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="book-section" id="periyar">
+    <div class="section-head">
+      <div>
+        <h2>📜 Thanthai Periyar Research</h2>
+        <p>Life, philosophy &amp; revolutionary legacy — a monumental research work</p>
+      </div>
+      <div class="price-pill">
+        <span class="mrp">₹400</span>
+        <span class="offer-price">₹250</span>
+        <span class="badge">Inaugural Offer</span>
+      </div>
+    </div>
+    <div class="lang-grid">
+      <div class="lang-card coming">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Tamil</div>
+        <span class="coming-btn">Coming Soon</span>
+      </div>
+      <div class="lang-card coming">
+        <div class="flag">🔤</div>
+        <div class="name">English</div>
+        <span class="coming-btn">Coming Soon</span>
+      </div>
+      <div class="lang-card coming">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Telugu</div>
+        <span class="coming-btn">Coming Soon</span>
+      </div>
+      <div class="lang-card coming">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Malayalam</div>
+        <span class="coming-btn">Coming Soon</span>
+      </div>
+      <div class="lang-card coming">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Kannada</div>
+        <span class="coming-btn">Coming Soon</span>
+      </div>
+      <div class="lang-card coming">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Hindi</div>
+        <span class="coming-btn">Coming Soon</span>
+      </div>
+    </div>
+    <div class="note-box">⚠️ Razorpay payment buttons for this book are not yet added. Please replace the "Coming Soon" cards with your Razorpay button IDs once created.</div>
+  </div>
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BOOK 7: MINDTRAPS                       -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="book-section" id="mindtraps">
+    <div class="section-head">
+      <div>
+        <h2>🧠 MindTraps</h2>
+        <p>The hidden psychology that controls everything you do — bilingual</p>
+      </div>
+      <div class="price-pill">
+        <span class="mrp">₹350</span>
+        <span class="offer-price">₹199</span>
+        <span class="badge">Inaugural Offer</span>
+      </div>
+    </div>
+    <div class="lang-grid" style="max-width:340px;">
+      <div class="lang-card coming">
+        <div class="flag">🔤</div>
+        <div class="name">English</div>
+        <span class="coming-btn">Coming Soon</span>
+      </div>
+      <div class="lang-card coming">
+        <div class="flag">🇮🇳</div>
+        <div class="name">Tamil</div>
+        <span class="coming-btn">Coming Soon</span>
+      </div>
+    </div>
+    <div class="note-box">⚠️ Razorpay payment buttons for MindTraps are not yet added. Please replace the "Coming Soon" cards with your Razorpay button IDs once created.</div>
+  </div>
+  <hr class="section-divider">
+
+  <!-- ═══════════════════════════════════════ -->
+  <!-- BUNDLE OFFER                            -->
+  <!-- ═══════════════════════════════════════ -->
+  <div class="bundle-section" id="bundle">
+    <h2>🎁 Complete Book Bundle</h2>
+    <p>All 7 Books · Your Choice of Language</p>
+    <div class="bundle-price">₹1000</div>
+    <div class="bundle-save">Save ₹200+ · Instant Digital Delivery</div>
+    <br>
+    <a class="bundle-btn" href="https://rzp.io/rzp/ogRdyIrA" target="_blank">🛒 Buy Bundle Now</a>
+    <div class="bundle-langs">
+      <span class="bundle-lang">தமிழ் Tamil</span>
+      <span class="bundle-lang">తెలుగు Telugu</span>
+      <span class="bundle-lang">മലയാളം Malayalam</span>
+      <span class="bundle-lang">ಕನ್ನಡ Kannada</span>
+      <span class="bundle-lang">हिंदी Hindi</span>
+      <span class="bundle-lang">English</span>
+    </div>
+    <p style="margin-top:18px;color:rgba(253,246,227,0.5);font-size:0.8rem;">Secure payment via Razorpay · Instant PDF delivery after payment</p>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 <span>வேலுகீதா | Velugeetha Digital Books</span></p>
+  <p style="margin-top:6px;">Accessible Knowledge for Every Student · <span>♿ Inclusive Edition</span></p>
+  <p style="margin-top:8px;opacity:0.5;font-size:0.78rem;">Secure payments powered by Razorpay</p>
+</footer>
+
+</body>
+</html>
